@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="contact-info">
+    <p>Connect with us:</p>
+    <div class="social-box">
+        <a href="https://facebook.com" target="_blank">
+            <img src="{{ url_for('static', filename='facebook.png') }}" alt="Facebook Logo">
+            Facebook
+        </a>
+    </div>
+    <div class="social-box">
+        <a href="https://linkedin.com" target="_blank">
+            <img src="{{ url_for('static', filename='linkedin.png') }}" alt="LinkedIn Logo">
+            LinkedIn
+        </a>
+    </div>
+    <div class="social-box">
+        <a href="https://github.com" target="_blank">
+            <img src="{{ url_for('static', filename='github.png') }}" alt="GitHub Logo">
+            GitHub
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="title">Explore Ladakh with Skarma</h1>
+<div class="blog-grid">
+    {% for blog in blogs %}
+    <div class="blog-card">
+        <div class="blog-image">
+            <img src="{{ blog.image }}" alt="{{ blog.title }} image">
+            <div class="overlay">
+                <h2>{{ blog.title }}</h2>
+                <p>by {{ blog.author }}</p>
+            </div>
+        </div>
+        <div class="blog-content">
+            <p>{{ blog.content[:150] }}...</p>
+            <div class="actions">
+                <a href="/blog/{{ blog.id }}" class="read-more">Read More</a>
+                <button class="action-button like"><span>&#x2764;</span> Like</button>
+                <button class="action-button comment"><span>&#128172;</span> Comment</button>
+                <button class="action-button share"><span>&#x1F4E3;</span> Book</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

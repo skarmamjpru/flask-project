@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="account-title">Your Account</h1>
+<div class="account-container">
+    <div class="sidebar">
+        <h2>Account Options</h2>
+        <ul>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/payment">Payment Methods</a></li>
+            <li><a href="/uploads">Uploads</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <div class="account-content">
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>Your account details and options are listed on the left.</p>
+        
+        <div class="option-content">
+            <h3>Profile Overview</h3>
+            <p>Email: {{ user.email }}</p>
+            <p>Joined on: {{ user.joined_date }}</p>
+        </div>
+        
+        <div class="option-content" style="display: none;">
+            <h3>Settings</h3>
+            <p>Manage your account settings here.</p>
+        </div>
+
+        <div class="option-content" style="display: none;">
+            <h3>Payment Methods</h3>
+            <p>Add or edit your payment methods here.</p>
+        </div>
+
+        <div class="option-content" style="display: none;">
+            <h3>Uploads</h3>
+            <p>View and manage your uploads.</p>
+        </div>
+    </div>
+</div>
+<script>
+    const links = document.querySelectorAll('.sidebar a');
+    const optionContents = document.querySelectorAll('.option-content');
+
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const target = this.getAttribute('href').substring(1);
+            optionContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            document.querySelector('.option-content.' + target).style.display = 'block';
+        });
+    });
+    document.querySelector('.option-content').style.display = 'block';
+</script>
+{% endblock %}

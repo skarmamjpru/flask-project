@@ -1,0 +1,234 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f0f7;
+}
+nav {
+    background-color: #b0d1bf;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+nav a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+}
+.title {
+    text-align: center;
+    font-size: 2em;
+    color: #4c7c5a;
+    margin-bottom: 20px;
+}
+.blog-grid {
+    display: grid;
+    grid-template-columns:  repeat(3, 1fr); 
+    gap: 15px;
+    padding: 15px;
+}
+.blog-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+.blog-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
+.blog-image img {
+    width: 100%;
+    height: inherit;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.blog-image:hover img {
+    transform: scale(1.1);
+}
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: #9ccba2;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.blog-image:hover .overlay {
+    opacity: 1;
+}
+.blog-content {
+    padding: 15px;
+}
+.blog-content p {
+    color: #555;
+    line-height: 1.5;
+}
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #0a9c64;
+    font-weight: bold;
+    text-decoration: none;
+}
+.read-more:hover {
+    text-decoration: underline;
+}
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #b0d1bf;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #b0d1bf;
+}
+
+.action-button span {
+    margin-right: 5px;
+    font-size: 18px;
+}
+.search-form {
+    display: inline-flex;
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.search-form button {
+    padding: 5px 10px;
+    background-color:  #0a9c64;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color:  #0a9c64;
+}
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    background-color: #f7eaf2;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-box img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.social-box a {
+    color:  #0a9c64;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.account-title {
+    text-align: center;
+    font-size: 2em;
+    color:  #0a9c64;
+    margin: 20px 0;
+}
+
+.account-container {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    flex: 1; 
+    background-color: #f7eaf2;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.5em;
+    color: #e75480;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #e75480;
+}
+
+.account-content {
+    flex: 3; /* Allow account content to take up more space */
+    padding: 15px;
+    margin-left: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.option-content {
+    margin-top: 20px;
+    display: none; /* Initially hidden */
+}
+
+.option-content.active {
+    display: block; /* Show the active content */
+}

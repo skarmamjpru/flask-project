@@ -6,8 +6,6 @@ app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 
-# Define the Blog model
-
 
 class Blog(db.Model):
     __tablename__ = 'blogs'
@@ -16,15 +14,6 @@ class Blog(db.Model):
     content = db.Column(db.Text, nullable=False)
     author = db.Column(db.String(100), nullable=False)
     image_url = db.Column(db.String(255))
-
-# (Optional) Define additional User model for account functionality if needed
-
-
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), unique=True, nullable=False)
-    bio = db.Column(db.String(255))
 
 
 with app.app_context():
@@ -62,4 +51,4 @@ def search():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)

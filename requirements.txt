@@ -1,0 +1,16 @@
+1. Core Flask and Web Development
+    Flask==3.0.3
+    Flask-Migrate==4.0.7
+    Flask-SQLAlchemy==3.1.1
+    Jinja2==3.1.4
+2.  Database and ORM
+    SQLAlchemy==2.0.36
+    psutil==6.0.0
+    Werkzeug==3.0.4
+3. HTML Parsing
+    pillow==10.4.0
+    MarkupSafe==3.0.2
+4. Utility Libraries
+    requests==2.32.3
+    urllib3==2.2.2
+    

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="blog-detail">
     <h1>{{ blog.title }}</h1>
-    <img src="{{ blog.image }}" alt="Blog Image">
+    <img src="{{ blog.image_url }}" alt="Blog Image" class="blog-image">
     <p>by {{ blog.author }}</p>
     <p>{{ blog.content }}</p>
 </div>

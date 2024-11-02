@@ -27,14 +27,13 @@ class User(db.Model):
     bio = db.Column(db.String(255))
 
 
-# Ensure database tables are created
 with app.app_context():
     db.create_all()
 
 
 @app.route('/')
 def home():
-    blogs = Blog.query.all()  # Fetch all blogs from the database
+    blogs = Blog.query.all()
     return render_template('home.html', title='Home', blogs=blogs)
 
 

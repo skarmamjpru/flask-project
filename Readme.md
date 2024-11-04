@@ -1,80 +1,185 @@
-# Project Setup Instructions
+# Blogging Application
 
-1. **Change to project directory:**
+This is a simple blogging application built with Flask, SQLAlchemy, and Marshmallow. It allows users to create, read, update, and delete blog posts through a RESTful API.
 
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Folder Descriptions](#folder-Descriptions)
+- [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
+  - [GET All Blogs](#get-all-blogs)
+  - [GET Blog Detail](#get-blog-detail)
+  - [POST Create Blog](#post-create-blog)
+  - [PUT Update Blog](#put-update-blog)
+  - [DELETE Blog](#delete-blog)
+- [Example Usage](#example-usage)
+
+## Requirements
+
+- Python 3.7 or higher
+- Flask
+- Flask-SQLAlchemy
+- Flask-Marshmallow
+- SQLAlchemy
+- Marshmallow
+
+## Installation
+
+1. **Download the Project**:
+
+   - Download the project as a ZIP file or clone the repository.
+   - If downloaded as a ZIP file, unzip it.
+
+2. **Navigate to the Project Directory:**
    ```bash
-   cd 24m0857lab11
+   cd 24M0577_lab11
    ```
-
-2. **Make sure that you have Flask installed. If not, then run:**
-
+3. **Install Dependencies**
+   - Use pip to install the required packages by running:
    ```bash
-   pip install Flask Flask-SQLAlchemy
+   pip install -r requirements.txt
    ```
-
-3. **Set Up the Database:**
-   The application uses SQLAlchemy for ORM. The database will be created automatically when you run the application for the first time.
-
-   OR
-
-   First, create a Database for fetching blog details. Run:
-
+4. **Run the Application**
+   - Start the application by executing:
    ```bash
-   python3 data.py
+   flask run --port 8000
    ```
+   -The application will be accessible at http://localhost:8000.
 
-4. **Run the Flask app:**
+## Folder Descriptions
 
-   ```bash
-   python app.py
-   ```
+- **`app/`**: This is the main application folder containing all the code related to the Flask application. It includes the initialization of the app, configuration settings, route definitions, and model definitions.
 
-5. **Access the Application:**
-   Open your web browser and navigate to:
-   ```
-   http://127.0.0.1:5000/
-   ```
+- **`__init__.py`**: This file is responsible for creating the Flask application instance and setting up the necessary configurations. It also initializes the database and imports the routes.
 
----
+- **`config.py`**: Contains configuration classes for the application. Here you can specify database connection strings, debug settings, and other constants.
 
-# Project Structure Overview
+- **`models.py`**: Defines the data models using SQLAlchemy, representing the structure of the database tables.
 
-1. **Instance:**
+- **`routes.py`**: Contains the route handlers for the application, defining the endpoints for various API operations.
 
-   - **site.db:** This is the SQLite database file, which stores all data for the application, including blog posts, comments, etc. The database is managed via SQLAlchemy, Flask’s ORM, allowing for easy interactions with the stored data.
+- **`instance/`**: This folder is intended for instance-specific files, such as the SQLite database file. This separation allows for easier management of files that may change during runtime.
 
-2. **config.py:**
+  - **`your_database.db`**: This file is created when the application runs and stores all the data related to the blog application.
 
-   - This file contains configuration settings for the Flask application, such as the secret key, database URI, and any other configurable options. It separates environment-specific configurations (development, testing, production) to enhance flexibility and security.
+- **`requirements.txt`**: A text file listing all the required Python packages for the project. This file is used to install the dependencies with `pip install -r requirements.txt`.
 
-3. **data.py:**
+- **`run.py`**: The main entry point for the application. When you run this file, it starts the Flask development server.
 
-   - **data.py:** It is a setup script responsible for initializing the database and inserting any sample data. This script includes code to create all database tables, populate initial data, and define any startup configurations required for a fresh database instance.
+- **`README.md`**: This documentation file provides an overview of the project, installation instructions, and information on how to use the application.
 
-4. **templates/ Folder:**
-   The templates folder stores all HTML template files used by Flask to render views dynamically. Each HTML file serves as a template for a specific page or feature of the web application.
+## API Endpoints
 
-   - **home.html:** The main homepage template, typically displaying an overview of available blogs and any other introductory content.
-   - **blog.html:** A template used to display individual blog posts in detail, including images, text, author information, etc.
-   - **contact.html:** A template for the contact page, where users can find ways to reach out or submit inquiries.
-   - **account.html:** This template serves as the user account page, allowing users to view or update account details and interact with features relevant to their profile.
+1.  **GET All Blogs**
+    • Endpoint: /api/blogs/
+    • Method: GET
+    • Description: Retrieves a list of all blogs.
+    ```bash
+    {
+     "id": 1,
+     "title": "Magnetic-Hill",
+     "author": "Skarma",
+     "content": "A cyclops hill where vehicles defy gravity...",
+     "image_url": "https://media1.thrillophilia.com/filestore/552g4i6pn5c2ggzy6ygnapbk23aw_shutterstock_425389177.jpg"
+    },
+    ...
+    ```
+2.  **GET Blog Detail**
 
-5. **static:**
-   The static folder holds all the static assets required by the website, such as images, stylesheets, etc.
+    • Endpoint: /api/blogs/<int:blog_id>
+    • Method: GET
+    • Description: Retrieves the details of a specific blog by ID.
 
----
+    ```bash
+    {
+     "id": 1,
+     "title": "Magnetic-Hill",
+     "author": "Skarma",
+     "content": "A cyclops hill where vehicles defy gravity...",
+     "image_url": "https://media1.thrillophilia.com/filestore/552g4i6pn5c2ggzy6ygnapbk23aw_shutterstock_425389177.jpg"
+    }
+    ```
 
-# URLs and Expected Outcomes
+3.  **POST Create Blog**
+    • Endpoint: /api/blogs/
+    • Method: POST
+    • Description: Creates a new blog.
+    • Input:
 
-| URL                     | Description                                                                                                                                                |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **/**                   | Home page displaying all blogs.                                                                                                                            |
-|                         | - A list of all blog posts with titles and images. Each post should have a “Read More” link.                                                               |
-| **/account**            | User account page.                                                                                                                                         |
-|                         | - Displays user information (e.g., name, bio).                                                                                                             |
-| **/contact**            | Contact page.                                                                                                                                              |
-|                         | - Displays contact information or a contact form.                                                                                                          |
-| **/blog/<int:blog_id>** | Detailed view of a specific blog post.                                                                                                                     |
-|                         | - Displays the title, content, author, and image of the selected blog post. If the blog post does not exist, it returns a 404 error with “Blog not found.” |
-| **/search**             | Search functionality for blog titles.                                                                                                                      |
-|                         | - Displays search results based on the query entered. If no results are found, it should show an empty list or relevant message.                           |
+    ```bash
+    curl -X POST http://localhost:8000/api/blogs/ \
+
+    -H "Content-Type: application/json" \
+    -d '{
+    "title": "My New Blog",
+    "content": "This blog talks about amazing places to visit.",
+    "author": "Skarma",
+    "image_url": "https://example.com/my-blog-image.jpg"
+    }'
+
+    ```
+
+    • Example Output:
+
+    ```bash
+    {
+
+     "author": "Skarma",
+     "content": "This blog talks about amazing places to visit.",
+     "id": 8,
+     "image_url": "https://example.com/my-blog-image.jpg",
+     "title": "My New Blog"
+     }
+    ```
+
+4.  **PUT Update Blog**
+
+    • Endpoint: /api/blogs/<int:blog_id>
+    • Method: PUT
+    • Description: Updates an existing blog by ID.
+    • Input:
+
+    ```bash
+    curl -X PUT http://localhost:8000/api/blogs/<blog_id> \
+    -H "Content-Type: application/json" \
+    -d '{
+     "title": "Magnetic Hill"
+    }'
+    ```
+
+    • Output:
+
+    ```bash
+    {
+    "id": 1,
+    "title": "Updated Blog Title",
+    "author": "Skarma",
+    "content": "A cyclops hill where vehicles defy gravity...",
+    "image_url": "https://media1.thrillophilia.com/filestore/552g4i6pn5c2ggzy6ygnapbk23aw_shutterstock_425389177.jpg"
+    }
+    ```
+
+5.  **DELETE Blog**
+
+    • Endpoint: /api/blogs/<int:blog_id>
+    • Method: DELETE
+    • Description: Deletes a specific blog by ID.
+    • Example Input:
+
+    ```bash
+      curl -X DELETE http://localhost:8000/api/blogs/8
+    ```
+
+    • Example Output:
+
+    ```bash
+    {
+    "message": "Blog deleted successfully"
+    }
+    ```
+
+## Example Usage
+
+-You can test the API endpoints using tools like cURL
